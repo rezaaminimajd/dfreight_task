@@ -1,8 +1,12 @@
 class Stage:
-    STEP = 1
 
-    def __init__(self):
-        pass
+    def __init__(self, step):
+        self.step = step
+
+    def __call__(self, *args, **kwargs):
+        self.pre_run()
+        self.run()
+        self.after_run()
 
     def pre_run(self):
         pass
