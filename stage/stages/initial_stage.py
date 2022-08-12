@@ -5,6 +5,11 @@ from lxml import html
 from services.textprocess import clean_city_name
 from apps.city import add_city
 
+from services.database import engine
+from apps.city.models import Base
+
+Base.metadata.create_all(bind=engine)
+
 
 class InitialStage(Stage):
 
@@ -23,11 +28,10 @@ class InitialStage(Stage):
         tree = html.fromstring(content)
         cities_name = clean_city_name(tree.xpath('/html/body//table//tr/td[1]/a/text()'))
         cities_link = tree.xpath('/html/body//table//tr/td[1]/a/@href')
-        print(len(cities_name), len(cities_link))
         for i in range(len(cities_link)):
             add_city(
                 self.step,
                 cities_name[i],
-                cities_link[1]
+                cities_link[i]
             )
         return True

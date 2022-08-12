@@ -13,6 +13,8 @@ class City(Base):
 
 
 class OldCity(Base):
+    __tablename__ = "old_cities"
+
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, unique=True)
     city_id = Column(Integer, ForeignKey('cities.id'))

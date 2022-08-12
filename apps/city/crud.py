@@ -4,11 +4,11 @@ from services.database import get_db
 from . import models
 
 
-def add_city(step: int, name: str, url: str, db: Session = get_db()):
+def add_city(step: int, name: str, url: str, db: Session = next(get_db())):
     db_city = models.City(
         step=step,
         name=name,
-        page_content=url
+        page_url=url
     )
     db.add(db_city)
     db.commit()

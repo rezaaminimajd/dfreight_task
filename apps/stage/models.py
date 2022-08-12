@@ -11,7 +11,7 @@ class StageStatus(Enum):
 
 
 class Stage(Base):
-    __tablename__ = "stages"
+    __tablename__ = "stage"
 
     id = Column(Integer, primary_key=True, index=True)
     step = Column(Integer, unique=True, index=True)
