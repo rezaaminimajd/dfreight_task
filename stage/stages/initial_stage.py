@@ -28,7 +28,9 @@ class InitialStage(Stage):
         tree = html.fromstring(content)
         cities_name = clean_city_name(tree.xpath('/html/body//table//tr/td[1]/a/text()'))
         cities_link = tree.xpath('/html/body//table//tr/td[1]/a/@href')
+        print(len(cities_link), len(cities_name))
         for i in range(len(cities_link)):
+            print(i, cities_name[i])
             add_city(
                 self.step,
                 cities_name[i],

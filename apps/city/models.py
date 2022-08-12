@@ -1,10 +1,13 @@
-from sqlalchemy import Column, Integer, Text, String, ForeignKey, DateTime
+from sqlalchemy import Column, Integer, Text, String, ForeignKey, DateTime, UniqueConstraint
 from services.database import Base
 
 
 class City(Base):
     __tablename__ = "cities"
 
+    __table_args__ = (
+        UniqueConstraint("step", "name"),
+    )
     id = Column(Integer, primary_key=True, index=True)
     step = Column(Integer)
     name = Column(String, nullable=False)
@@ -18,5 +21,3 @@ class OldCity(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, unique=True)
     city_id = Column(Integer, ForeignKey('cities.id'))
-    start_date = Column(DateTime)
-    end_date = Column(DateTime)
