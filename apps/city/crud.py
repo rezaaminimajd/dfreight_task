@@ -20,6 +20,11 @@ def add_city(step: int, name: str, url: str, db: Session = next(get_db())):
         db.rollback()
 
 
+def delete_other_steps(step: int, db: Session = next(get_db())):
+    db.query(models.City).filter(models.City.step < step).delete()
+    db.commit()
+
+
 def update_city_content(step: int, name: str, content: str, db: Session = get_db()):
     db.query(models.City).filter(
         models.City.step == step,

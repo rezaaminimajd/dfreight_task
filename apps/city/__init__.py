@@ -1,1 +1,1 @@
-from .crud import add_city
+from .crud import add_city, delete_other_steps
