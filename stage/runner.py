@@ -4,7 +4,7 @@ from shared import Stage
 from apps.stage import last_stage, add_stage, update_end_date, models as stage_model
 from apps.city import models as city_model
 from services.database import engine
-from .initial_stage import InitialStage
+from stage.stages import *
 
 
 class StageRunner:
@@ -27,7 +27,8 @@ class StageRunner:
     def pre_run(self):
         city_model.Base.metadata.create_all(bind=engine)
         stage_model.Base.metadata.create_all(bind=engine)
-        self.step = last_stage() + 1
+        last_step = last_stage()
+        self.step = (0 if not last_step else last_step.step) + 1
         add_stage(self.step)
 
     def run(self):
