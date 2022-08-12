@@ -5,13 +5,14 @@ class Stage:
 
     def __call__(self, *args, **kwargs):
         self.pre_run()
-        self.run()
-        self.after_run()
+        successful = self.run()
+        if successful:
+            self.after_run()
 
     def pre_run(self):
         pass
 
-    def run(self):
+    def run(self) -> bool:
         pass
 
     def after_run(self):

@@ -23,7 +23,7 @@ class StageRunner:
 
     def run(self):
         for stage in self.stages:
-            stage(self.step)
+            stage(self.step)()
 
     def after_run(self):
         update_end_date(self.step)
