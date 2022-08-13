@@ -9,7 +9,8 @@ from stage.stages import *
 
 class StageRunner:
     ALL_STAGES = {
-        InitialStage: True
+        InitialStage: True,
+        ExternalSource1: False
     }
 
     def __init__(self, stages: List[Stage] = None):
