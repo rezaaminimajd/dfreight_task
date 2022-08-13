@@ -38,7 +38,7 @@ class StageRunner:
                 stage(self.step, necessary)()
             except Exception as e:
                 logging.error(e)
-                if stage.necessary:
+                if necessary:
                     return False
 
     def after_run(self):
