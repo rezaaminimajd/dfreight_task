@@ -11,7 +11,8 @@ class StageRunner:
     ALL_STAGES = {
         InitialStage: True,
         ExternalSource1: False,
-        ExternalSource2: False
+        ExternalSource2: False,
+        # NlpNer: False, # todo failed
     }
 
     def __init__(self, stages: List[Stage] = None):
