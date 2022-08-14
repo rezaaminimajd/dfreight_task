@@ -31,6 +31,10 @@ def update_city_content(name: str, content: str, db: Session = get_db()):
     )
 
 
+def get_all_city(db: Session = next(get_db())):
+    return db.query(models.City).all()
+
+
 def add_old_city(old: str, new: str, db: Session = next(get_db())):
     try:
         result = db.query(models.OldCity).filter(
