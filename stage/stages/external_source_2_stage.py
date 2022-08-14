@@ -29,6 +29,3 @@ class ExternalSource2(Stage):
             if city_name and old_city_name:
                 add_old_city(clean_city_name(old_city_name), clean_city_name(city_name))
         return True
-
-
-ExternalSource2(1, True)()

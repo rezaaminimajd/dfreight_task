@@ -11,8 +11,7 @@ def clean_cities_name(cities):
 
 
 def clean_city_name(city):
-    city = city.replace('\u200c', '')
-    return Normalizer.normalize(
+    city = Normalizer.normalize(
         text=city,
         zwnj="\u200c",
         tokenized=False,
@@ -20,6 +19,8 @@ def clean_city_name(city):
         extra_clean=True,
         remove_emoji=False
     )
+    city = city.replace('\u200c', '')
+    return city
 
 
 def has_numbers(string):

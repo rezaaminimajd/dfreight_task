@@ -19,8 +19,7 @@ def upsert_city(name: str, url: str, db: Session = next(get_db())):
             )
             db.add(db_city)
         db.commit()
-    except Exception as e:
-        logging.warning(f"{e}")
+    except:
         db.rollback()
 
 
@@ -46,7 +45,5 @@ def add_old_city(old: str, new: str, db: Session = next(get_db())):
             db.add(db_city)
             db.commit()
             db.refresh(db_city)
-    except Exception as e:
-        logging.error(e)
+    except:
         db.rollback()
-
