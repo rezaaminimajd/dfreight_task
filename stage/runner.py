@@ -1,6 +1,6 @@
 import logging
 from typing import List
-from shared import Stage
+from .shared import Stage
 from apps.stage import last_stage, add_stage, update_end_date, models as stage_model
 from apps.city import models as city_model
 from services.database import engine
@@ -45,6 +45,3 @@ class StageRunner:
 
     def after_run(self):
         update_end_date(self.step)
-
-
-StageRunner()
